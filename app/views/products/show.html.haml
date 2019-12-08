@@ -195,6 +195,7 @@
         %li
           = link_to "メルカリ", "#"
         %li
-          %span 商品名
+          %span
+            = @product.name
 
   = render partial: 'shared/footer'
