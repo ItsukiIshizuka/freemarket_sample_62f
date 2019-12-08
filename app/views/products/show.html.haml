@@ -106,10 +106,10 @@
             =link_to "この商品を削除する", product_path(params[:id]), method: :delete ,class: "product-delete"
             %i.fa.fa-product-delete
 
-    .product-box-content-under
-      .product-box-content-under__message
-        %ul.product-box-content-under__message__talk
-          - unless @messages.blank?
+    - unless @messages.blank?
+      .product-box-content-under
+        .product-box-content-under__message
+          %ul.product-box-content-under__message__talk
             - @messages.each do |message|
               %li.product-box-content-under__message__talk__box
                 .product-box-content-under__message__talk__box__name

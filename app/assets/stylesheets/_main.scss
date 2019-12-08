@@ -182,8 +182,25 @@
           }
 
           &-title {
-            padding: 10px;
-            height: 6.2rem;
+            height: 64px;
+            padding: 0 12px;
+            span {
+              display: inline-block;
+              height: 2.8em;
+              overflow: hidden;
+              position: relative;
+              transform: translateY(-50%);
+              top: 50%;
+              &::after{
+                background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+                bottom: 0;
+                content: "";
+                height: 50%;
+                position: absolute;
+                right: 0;
+                width: 50%;
+              }
+            }
           }
         }
       }
