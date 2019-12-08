@@ -50,11 +50,19 @@
                   %label
                     カテゴリー
                     %span.form-require 必須
-                  %div.select
+                  .select
                     .select-wrap
                       %i.icon-arrow-bottom
                       = f.collection_select :category_id, @category, :id, :name, { prompt: @category }, { class: "select-default", id: "category_select" }
                   .select-children
+                    .product-select-wrapper#children_wrapper2
+                      .product_category-sele
+                        = f.collection_select :category_id, @category_children, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "child_category" }
+                      .select-grandchildren
+                        .product-select-wrapper#grandchildren_wrapper2
+                          .product_category-select
+                            = f.collection_select :category_id, @categroy_grand, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "grandchild_category"}
+                        .product_select-grandchildren
                     =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
                 .form-group
                   %label
