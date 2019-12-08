@@ -107,9 +107,9 @@
             %i.fa.fa-product-delete
 
     .product-box-content-under
-      .product-box-content-under__message
-        %ul.product-box-content-under__message__talk
-          - unless @messages.blank?
+      - unless @messages.blank?
+        .product-box-content-under__message
+          %ul.product-box-content-under__message__talk
             - @messages.each do |message|
               %li.product-box-content-under__message__talk__box
                 .product-box-content-under__message__talk__box__name
@@ -117,8 +117,8 @@
                 .product-box-content-under__message__talk__box__in
                   = message.message
                 .balloon2-left
-      .product-box-content__message__box
-        - if current_user
+      - if user_signed_in?
+        .product-box-content__message__box
           = form_for @message, url: product_messages_path(product_id: params[:id]), method: :post, html: {class: "product-message-form"} do |f|
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = f.text_area :message, class: "product-textarea"
@@ -195,6 +195,7 @@
         %li
           = link_to "メルカリ", "#"
         %li
-          %span 商品名
+          %span
+            = @product.name
 
   = render partial: 'shared/footer'

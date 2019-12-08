@@ -593,14 +593,11 @@ a {
 }
 
 .product-box-content-under {                           //コメント部分
-  background: $white-color;
   width: 700px;
   margin: 8px auto;
-  padding: 24px;
-  background: #fff;
   &__message {
-    padding: 20px;
-    margin-top: -50px;
+    padding: 24px;
+    background: $white-color;
     &__talk{                                  //内側大枠
       margin: 0;
       list-style: none;
@@ -660,6 +657,8 @@ a {
     }    
   }
   .product-box-content__message__box{
+    padding: 24px;
+    background: $white-color;
     .product-message-form { 
       p {
         padding: 8px;

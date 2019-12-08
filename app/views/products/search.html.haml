@@ -25,7 +25,7 @@
               ="    1 - #{@products.length}件表示"
           .search-contener__right__search-results__all
             - unless @products.blank?
-              - @products.each do |product|
+              - @products.reverse_each do |product|
                 .search-contener__right__search-results__all__box
                   = link_to product_path(product.id) do
                     .search-contener__right__search-results__all__box__img-box

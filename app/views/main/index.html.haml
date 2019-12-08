@@ -44,8 +44,9 @@
                   = image_tag("#{woman.images[0].image}", class: 'main__ladies__inner__list-item-image')
                   %span.price-label
                     = "¥#{woman.price.to_s(:delimited)}"
-                  %p.main__ladies__inner__list-item-title
-                    = woman.name
+                  .main__ladies__inner__list-item-title
+                    %span
+                      = woman.name
 
     %section.main__mens
       .main__mens__inner
@@ -62,8 +63,9 @@
                   = image_tag("#{man.images[0].image}", class: 'main__mens__inner__list-item-image')
                   %span.price-label
                     = "¥#{man.price.to_s(:delimited)}"
-                  %p.main__mens__inner__list-item-title
-                    = man.name
+                  .main__mens__inner__list-item-title
+                    %span
+                      = man.name
 
     %section.main__electronics
       .main__electronics__inner
@@ -80,8 +82,9 @@
                   = image_tag("#{home_appliance.images[0].image}", class: 'main__electronics__inner__list-item-image')
                   %span.price-label
                     = "¥#{home_appliance.price.to_s(:delimited)}"
-                  %p.main__electronics__inner__list-item-title
-                    = home_appliance.name
+                  .main__electronics__inner__list-item-title
+                    %span
+                      = home_appliance.name
 
     %section.main__hobbys
       .main__hobbys__inner
@@ -98,8 +101,9 @@
                   = image_tag("#{toy.images[0].image}", class: 'main__hobbys__inner__list-item-image')
                   %span.price-label
                     = "¥#{toy.price.to_s(:delimited)}"
-                  %p.main__hobbys__inner__list-item-title
-                    = toy.name
+                  .main__hobbys__inner__list-item-title
+                    %span
+                      = toy.name
 
 -# ブランド機能未実装のためコメントアウト
     -# %section.main__category
