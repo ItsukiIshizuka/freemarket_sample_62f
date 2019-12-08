@@ -78,8 +78,12 @@ class ProductsController < ApplicationController
     grand_num = @product.category_id
     parent_num = Category.find(grand_num).parent.parent.id
     children_num = Category.find(grand_num).parent.id
+
+    delivery_num = @product.delivery.ancestry
+
     @category_children = Category.where(ancestry: parent_num)
     @categroy_grand = Category.where(ancestry: "#{parent_num}/#{children_num}")
+    @delivery_children = Delivery.where(ancestry: delivery_num)
   end
 
   def update

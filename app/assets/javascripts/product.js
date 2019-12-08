@@ -146,6 +146,7 @@ $(function(){
   });
 
   $(document).on('change', '#delivery_select', function(){
+    $("#form-group_children2").remove();
     var productdelivery = document.getElementById('delivery_select').value;
 
     if (productdelivery != ''){

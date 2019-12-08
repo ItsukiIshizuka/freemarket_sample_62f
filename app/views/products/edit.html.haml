@@ -86,6 +86,14 @@
                       %i.icon-arrow-bottom
                       =f.collection_select :delivery_id, @delivery, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_select" }
                 .form-group_children
+                  .form-group#form-group_children2
+                    %label
+                      配送の方法
+                      %span.form-require 必須
+                    %div
+                    .select-wrap
+                      %i.icon-arrow-bottom
+                      =f.collection_select :delivery_id, @delivery_children, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_children" }
                 .form-group
                   %label
                     発送元の地域
