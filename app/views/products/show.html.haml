@@ -106,8 +106,8 @@
             =link_to "この商品を削除する", product_path(params[:id]), method: :delete ,class: "product-delete"
             %i.fa.fa-product-delete
 
-    - unless @messages.blank?
-      .product-box-content-under
+    .product-box-content-under
+      - unless @messages.blank?
         .product-box-content-under__message
           %ul.product-box-content-under__message__talk
             - @messages.each do |message|
@@ -117,8 +117,8 @@
                 .product-box-content-under__message__talk__box__in
                   = message.message
                 .balloon2-left
-      .product-box-content__message__box
-        - if current_user
+      - if user_signed_in?
+        .product-box-content__message__box
           = form_for @message, url: product_messages_path(product_id: params[:id]), method: :post, html: {class: "product-message-form"} do |f|
             %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = f.text_area :message, class: "product-textarea"
