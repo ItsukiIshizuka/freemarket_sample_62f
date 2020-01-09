@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def sell
     @product = Product.new
-    @product_image = @product.images.build
+    @product.images.build
     @delivery = Delivery.all.order("id ASC").limit(2) # deliveryの親
   end
 
@@ -32,9 +32,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      params[:images][":image"].each do |a|
-        @product_image = @product.images.create!(image: a, product_id: @product.id)
-      end
       flash[:notice] = "出品しました"
       redirect_to root_path
     else
@@ -75,6 +72,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product.images.build
+
     grand_num = @product.category_id
     parent_num = Category.find(grand_num).parent.parent.id
     children_num = Category.find(grand_num).parent.id
@@ -148,7 +147,7 @@ private
       :category_id,
       :delivery_id,
       :brand_id,
-      images_attributes: [:id, :product_id, :image]
+      images_attributes: [:image, :id, :_destroy]
     ).merge(user_id: current_user.id)
   end
 
@@ -165,6 +164,7 @@ private
       :category_id,
       :delivery_id,
       :brand_id,
+      images_attributes: [:image, :id, :_destroy]
     ).merge(user_id: current_user.id)
   end
 

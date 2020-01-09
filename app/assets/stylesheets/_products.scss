@@ -157,30 +157,14 @@ a {
   width: 620px;
 }
 
-.sell-upload-drop-box {
-  position: relative;
-  padding: 40px;
-  min-height: 162px;
-  background: #f5f5f5;
-  border: 1px dashed #ccc;
-  font-size: 0;
-  text-align: center;
-  transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
-  cursor: pointer;
-  .sell-upload-drop-file{
-    display: none;
+.images{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 500px;
+  .new_input{
+    width: calc(100% / 5);
+    flex-grow: 1;
   }
-}
-
-.sell-upload-drop-box p {
-  position: absolute;
-  top: 40%;
-  left: 16px;
-  right: 16px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
-  
 }
 
 .sell-content {

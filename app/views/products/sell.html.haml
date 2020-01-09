@@ -2,7 +2,7 @@
   = render partial: 'shared/flash'
   = render partial: 'shared/header3' 
   //ここからメインコンテンツ
-  = form_for @product, url: products_path, meshod: :post, html: { class: "sell-form", multipart: true} do |f| 
+  = form_for @product, url: products_path, meshod: :post, html: { class: "sell-form"} do |f| 
     %main.single-main
       %section.l-single-container.buy-item-container
         .sell-container
@@ -13,21 +13,32 @@
               出品画像
               %span.form-require 必須
             %p 最大10枚までアップロードできます
-            = f.fields_for :images do |i|
-              #display-flex_box
-                #preview
-                .sell-dropbox-container.clearfix.state-image-number-10
-                  = i.label :image, class: "dropzone-box", for: "upload-image" do
-                    .sell-upload-drop-box.have-item-0
-                      =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
-                      %p.visible-pc クリックしてファイルをアップロード
-              #display-flex_box2
-                #preview2
-                .sell-dropbox-container.clearfix.state-image-number-102
-                  = i.label :image, class: "dropzone-box", for: "upload-image" do
-                    .sell-upload-drop-box.have-item-1
-                      =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
-                      %p.visible-pc クリックしてファイルをアップロード
+            .images
+              = f.fields_for :images do |image|
+                - if image.object.image.blank?
+                  .new_input
+                    = image.file_field :image, class: :user_img
+                - else
+                  .image
+                    = image_tag image.object.image.to_s, id: :img_prev, height:'100', width: '100'
+                    .input
+                      = image.hidden_field :id, value: image.object.id
+                      = image.hidden_field :_destroy, value: ""
+                      %button.delete{type: :button}
+                -# - else
+                -#   .image
+                -#     = image_tag image.object.image.to_s, id: :img_prev, height:'100', width: '100'
+                -#     .input
+                -#       = image.hidden_field :id, value: image.object.id
+                -#       = image.hidden_field :_destroy, value: ""
+                -#       %button.delete{type: :button}
+                -# #display-flex_box
+                -#   #preview
+                -#   .sell-dropbox-container.clearfix.state-image-number-10
+                -#     = i.label :image, class: "dropzone-box", for: "upload-image" do
+                -#       .sell-upload-drop-box.have-item-0
+                -#         =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
+                -#         %p.visible-pc クリックしてファイルをアップロード
           //ここから"商品詳細"
           .sell-content
             .form-group
