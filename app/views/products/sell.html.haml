@@ -16,11 +16,14 @@
             .images
               = f.fields_for :images do |image|
                 - if image.object.image.blank?
-                  .new_input
+                  %label.new_input
                     = image.file_field :image, class: :user_img
+                    .visible-pc
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
                 - else
                   .image
-                    = image_tag image.object.image.to_s, id: :img_prev, height:'100', width: '100'
+                    = image_tag image.object.image.to_s, id: :img_prev, height:'114', width: '116'
                     .input
                       = image.hidden_field :id, value: image.object.id
                       = image.hidden_field :_destroy, value: ""

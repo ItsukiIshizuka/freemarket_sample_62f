@@ -184,7 +184,7 @@ $(function(){
   
     function readURL(input) {
       let app_img = $(`<div class="image">
-                      <img id="img_prev${input_length-1}" height="100" width="100" src="">
+                      <img id="img_prev${input_length-1}" height="114" width="114" src="">
                       <div class="input">
                       <div class="kara"></div>
                       <input value="" type="hidden" name="product[images_attributes][${input_length-1}][_destroy]">
@@ -202,7 +202,7 @@ $(function(){
         reader.onload = function (e) {
           $(prev).attr('src', e.target.result);
         }
-        $('.new_input').append(app_input);
+        $('.new_input').prepend(app_input);
         reader.readAsDataURL(input.files[0]);
       }
     }

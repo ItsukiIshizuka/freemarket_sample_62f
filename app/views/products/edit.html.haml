@@ -15,10 +15,13 @@
             %p 最大10枚までアップロードできます
             .images
               = f.fields_for :images do |image|
-                - if image.object.image.blank?
-                  .new_input
+                - if image.object.image.blank? && image.index != 10
+                  %label.new_input
                     = image.file_field :image, class: :user_img
-                - else
+                    .visible-pc
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
+                - elsif image.index != 10
                   .image
                     = image_tag image.object.image.to_s, id: :img_prev, height:'100', width: '100'
                     .input
