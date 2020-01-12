@@ -181,7 +181,8 @@ $(function(){
 $(function(){
   //ここから画像投稿
     let input_length = 0; //ファイル選択時点のimageの数を入れる
-  
+    let new_input = $(".new_input")
+
     function readURL(input) {
       let app_img = $(`<div class="image">
                       <img id="img_prev${input_length-1}" height="114" width="116" src="">
@@ -193,16 +194,16 @@ $(function(){
                       </div>`);
   
       let app_input = $(`<input class="user_img" type="file" name="product[images_attributes][${input_length}][image]">`);
-  
+      
       $('.images').append(app_img);
-  
       if (input.files && input.files[0]) {
         let prev = $("#img_prev" + (input_length-1))
         let reader = new FileReader();
         reader.onload = function (e) {
           $(prev).attr('src', e.target.result);
         }
-        $('.new_input').prepend(app_input);
+        max_height = $(".images").height(); //510
+        $(new_input).prepend(app_input);
         reader.readAsDataURL(input.files[0]);
       }
     }
@@ -211,7 +212,8 @@ $(function(){
       $(this).css('display', 'none');
       input_length = $(this).parent().parent().children().length; //ファイル選択時のimage数を数える
       readURL(this);
-      $('.new_input').before($('.image'));
+      if (max_height == 510){$(new_input).css("display", "none")}; //10枚投稿されたらinputboxを隠す
+      $(new_input).before($('.image')); //new_inputとimageを入れ替える
     });
   //ここまで画像投稿
   
@@ -219,7 +221,10 @@ $(function(){
     $(document).on("click", ".delete", function(){
       let delete_img = $(this).parent().parent();
       let delete_add = $(this).parent().children()[1];
-  
+      let input_box = $(new_input).css("display");
+
+      if (input_box == "none"){$(new_input).css("display", "block")}; //画像が9枚になったらinputboxを再表示する
+
       $(delete_img).css('display', 'none');
       $(delete_add).attr('value', "1");
     });

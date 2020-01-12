@@ -19,8 +19,7 @@
                   %label.new_input
                     = image.file_field :image, class: :user_img
                     .visible-pc
-                      ドラッグアンドドロップ
-                      またはクリックしてファイルをアップロード
+                      クリックしてファイルをアップロード
                 - else
                   .image
                     = image_tag image.object.image.to_s, id: :img_prev, height:'114', width: '116'

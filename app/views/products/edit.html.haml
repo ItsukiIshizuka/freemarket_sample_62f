@@ -19,8 +19,7 @@
                   %label.new_input
                     = image.file_field :image, class: :user_img
                     .visible-pc
-                      ドラッグアンドドロップ
-                      またはクリックしてファイルをアップロード
+                      クリックしてファイルをアップロード
                 - elsif image.index != 10
                   .image
                     = image_tag image.object.image.to_s, id: :img_prev, height:'114', width: '116'
@@ -28,6 +27,13 @@
                       = image.hidden_field :id, value: image.object.id
                       = image.hidden_field :_destroy, value: ""
                       .delete{type: :button} 削除
+                - else
+                  %label.new_input{style: "display:none"}
+                    = image.file_field :image, class: :user_img
+                    .visible-pc
+                      クリックしてファイルをアップロード
+                  
+
             //ここから"商品詳細"
           .sell-content
             .form-group
