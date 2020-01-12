@@ -189,7 +189,7 @@ $(function(){
                       <div class="input">
                       <div class="kara"></div>
                       <input value="" type="hidden" name="product[images_attributes][${input_length-1}][_destroy]">
-                      <div class="delete" type="button">削除</div>
+                      <div class="delete" type="button">削 除</div>
                       </div>
                       </div>`);
   
