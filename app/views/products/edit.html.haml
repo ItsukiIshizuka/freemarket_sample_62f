@@ -23,125 +23,125 @@
                       またはクリックしてファイルをアップロード
                 - elsif image.index != 10
                   .image
-                    = image_tag image.object.image.to_s, id: :img_prev, height:'100', width: '100'
+                    = image_tag image.object.image.to_s, id: :img_prev, height:'114', width: '116'
                     .input
                       = image.hidden_field :id, value: image.object.id
                       = image.hidden_field :_destroy, value: ""
-                      %button.delete{type: :button}
+                      .delete{type: :button} 削除
             //ここから"商品詳細"
-            .sell-content
-              .form-group
-                %label
-                  商品名
-                  %span.form-require 必須
-                %div
-                  =f.text_field :name, class: "input-default", placeholder: "商品名（必須 40文字まで)"
-              .form-group
-                %label
-                  商品の説明
-                  %span.form-require 必須
-                %div
-                  = f.text_area :information, class: "textarea-default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-                  =f.text_field :selling_status, autocomplete: "selling_status", type: "hidden", value: "出品中"
-            .sell-content.clearfix
-              %h3.sell-sub-head 商品の詳細
-              .sell-form-box
-                .form-group.sell
-                  %label
-                    カテゴリー
-                    %span.form-require 必須
-                  .select
-                    .select-wrap
-                      %i.icon-arrow-bottom
-                      = f.collection_select :category_id, @category, :id, :name, { prompt: @category }, { class: "select-default", id: "category_select" }
-                  .select-children
-                    .product-select-wrapper#children_wrapper2
-                      .product_category-sele
-                        = f.collection_select :category_id, @category_children, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "child_category" }
-                      .select-grandchildren
-                        .product-select-wrapper#grandchildren_wrapper2
-                          .product_category-select
-                            = f.collection_select :category_id, @categroy_grand, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "grandchild_category"}
-                        .product_select-grandchildren
-                    =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
-                .form-group
-                  %label
-                    商品の状態
-                    %span.form-require 必須
-                  %div
-                    .select-wrap
-                      %i.icon-arrow-bottom
-                      = f.select :status, options_for_select(status.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'} 
-                      //ここまで"商品詳細"
-            //ここから"配送について"
-            .sell-content.clearfix
-              %h3.sell-sub-head 商品の詳細
-              .sell-form-box
-                .form-group
-                  %label
-                    配送料の負担
-                    %span.form-require 必須
-                  %div
-                    .select-wrap
-                      %i.icon-arrow-bottom
-                      =f.collection_select :delivery_id, @delivery, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_select" }
-                .form-group_children
-                  .form-group#form-group_children2
-                    %label
-                      配送の方法
-                      %span.form-require 必須
-                    %div
-                    .select-wrap
-                      %i.icon-arrow-bottom
-                      =f.collection_select :delivery_id, @delivery_children, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_children" }
-                .form-group
-                  %label
-                    発送元の地域
-                    %span.form-require 必須
-                  %div
-                    .select-wrap
-                      %i.icon-arrow-bottom
-                      = f.select :area, options_for_select(prefecture.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
-                .form-group
-                  %label
-                    発送までの日数
-                    %span.form-require 必須
-                  %div
-                    .select-wrap
-                      %i.icon-arrow-bottom
-                      = f.select :sending_days, options_for_select(sending_days.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
-            //ここまで配送について
-            //ここから販売価格
-            .sell-content.clearfix
-              %h3.sell-sub-head 販売価格(300〜9,999,999)
-              .sell-form-box
-                %ul.sell-price
-                  %li.form-group
-                    .clearfix
-                      %label.l-left
-                        価格
-                        %span.form-require 必須
-                      .l-right.sell-price-input
-                        ¥
-                        %div
-                          =f.text_field :price, autocomplete: "price", placeholder: "例）300", class: "input-default"
-                          =f.text_field :profit, autocomplete: "profit", type: "hidden", class: "input-default", value: 100
-                  %li.clearfix
-                    .l-left
-                      販売手数料 (10%)
-                    .l-right -
-                  %li.clearfix.bold
-                    .l-left 販売利益
-                    .l-right -
-            .sell-content.sell-btn-box
+          .sell-content
+            .form-group
+              %label
+                商品名
+                %span.form-require 必須
               %div
-                %p 禁止されている出品、行為を必ずご確認ください。
-                %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
-                %p り処罰される可能性があります。
-                %p また、出品をもちまして加盟店規約に同意したことになります。
-              %button.btn-default.btn-red{type: "submit"}
-                出品する
-              =link_to "もどる", product_path(@product.id), class: "btn-default btn-gray"
+                =f.text_field :name, class: "input-default", placeholder: "商品名（必須 40文字まで)"
+            .form-group
+              %label
+                商品の説明
+                %span.form-require 必須
+              %div
+                = f.text_area :information, class: "textarea-default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+                =f.text_field :selling_status, autocomplete: "selling_status", type: "hidden", value: "出品中"
+          .sell-content.clearfix
+            %h3.sell-sub-head 商品の詳細
+            .sell-form-box
+              .form-group.sell
+                %label
+                  カテゴリー
+                  %span.form-require 必須
+                .select
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = f.collection_select :category_id, @category, :id, :name, { prompt: @category }, { class: "select-default", id: "category_select" }
+                .select-children
+                  .product-select-wrapper#children_wrapper2
+                    .product_category-sele
+                      = f.collection_select :category_id, @category_children, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "child_category" }
+                    .select-grandchildren
+                      .product-select-wrapper#grandchildren_wrapper2
+                        .product_category-select
+                          = f.collection_select :category_id, @categroy_grand, :id, :name, { prompt: "---" }, { class: "category_select-box", id: "grandchild_category"}
+                      .product_select-grandchildren
+                  =f.text_field :brand_id, autocomplete: "brand", type: "hidden", value: "1"
+              .form-group
+                %label
+                  商品の状態
+                  %span.form-require 必須
+                %div
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = f.select :status, options_for_select(status.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'} 
+                    //ここまで"商品詳細"
+          //ここから"配送について"
+          .sell-content.clearfix
+            %h3.sell-sub-head 商品の詳細
+            .sell-form-box
+              .form-group
+                %label
+                  配送料の負担
+                  %span.form-require 必須
+                %div
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    =f.collection_select :delivery_id, @delivery, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_select" }
+              .form-group_children
+                .form-group#form-group_children2
+                  %label
+                    配送の方法
+                    %span.form-require 必須
+                  %div
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    =f.collection_select :delivery_id, @delivery_children, :id, :responsibility, { prompt: "---" }, { class: "select-default", id: "delivery_children" }
+              .form-group
+                %label
+                  発送元の地域
+                  %span.form-require 必須
+                %div
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = f.select :area, options_for_select(prefecture.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
+              .form-group
+                %label
+                  発送までの日数
+                  %span.form-require 必須
+                %div
+                  .select-wrap
+                    %i.icon-arrow-bottom
+                    = f.select :sending_days, options_for_select(sending_days.map{|c|[c[:name], c[:name]]}), { prompt: "---" }, {class: 'select-default'}
+          //ここまで配送について
+          //ここから販売価格
+          .sell-content.clearfix
+            %h3.sell-sub-head 販売価格(300〜9,999,999)
+            .sell-form-box
+              %ul.sell-price
+                %li.form-group
+                  .clearfix
+                    %label.l-left
+                      価格
+                      %span.form-require 必須
+                    .l-right.sell-price-input
+                      ¥
+                      %div
+                        =f.text_field :price, autocomplete: "price", placeholder: "例）300", class: "input-default"
+                        =f.text_field :profit, autocomplete: "profit", type: "hidden", class: "input-default", value: 100
+                %li.clearfix
+                  .l-left
+                    販売手数料 (10%)
+                  .l-right -
+                %li.clearfix.bold
+                  .l-left 販売利益
+                  .l-right -
+          .sell-content.sell-btn-box
+            %div
+              %p 禁止されている出品、行為を必ずご確認ください。
+              %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であ
+              %p り処罰される可能性があります。
+              %p また、出品をもちまして加盟店規約に同意したことになります。
+            %button.btn-default.btn-red{type: "submit"}
+              出品する
+            =link_to "もどる", product_path(@product.id), class: "btn-default btn-gray"
     //"ここまで販売価格"
     //ここまでメインコンテンツ
   = render partial: 'shared/footer2'

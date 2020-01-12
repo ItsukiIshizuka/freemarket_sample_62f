@@ -27,21 +27,7 @@
                     .input
                       = image.hidden_field :id, value: image.object.id
                       = image.hidden_field :_destroy, value: ""
-                      %button.delete{type: :button}
-                -# - else
-                -#   .image
-                -#     = image_tag image.object.image.to_s, id: :img_prev, height:'100', width: '100'
-                -#     .input
-                -#       = image.hidden_field :id, value: image.object.id
-                -#       = image.hidden_field :_destroy, value: ""
-                -#       %button.delete{type: :button}
-                -# #display-flex_box
-                -#   #preview
-                -#   .sell-dropbox-container.clearfix.state-image-number-10
-                -#     = i.label :image, class: "dropzone-box", for: "upload-image" do
-                -#       .sell-upload-drop-box.have-item-0
-                -#         =i.file_field :image, multiple: true, name: "images[:image][]", id: "upload-image", class: "sell-upload-drop-file"
-                -#         %p.visible-pc クリックしてファイルをアップロード
+                      .delete{type: :button} 削除
           //ここから"商品詳細"
           .sell-content
             .form-group

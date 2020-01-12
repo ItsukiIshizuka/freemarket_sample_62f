@@ -190,7 +190,15 @@ a {
   }
   .image{
     height: 160px;
-    margin-left: 10px;
+    width: 114px;
+    margin: 0 0 10px 10px;
+    .input{
+      height: 46px;
+      background-color: #f5f5f5;
+      text-align: center;
+      line-height: 44px;
+      cursor: pointer;
+    }
   }
 }
 

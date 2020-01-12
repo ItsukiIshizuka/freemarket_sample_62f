@@ -184,11 +184,11 @@ $(function(){
   
     function readURL(input) {
       let app_img = $(`<div class="image">
-                      <img id="img_prev${input_length-1}" height="114" width="114" src="">
+                      <img id="img_prev${input_length-1}" height="114" width="116" src="">
                       <div class="input">
                       <div class="kara"></div>
                       <input value="" type="hidden" name="product[images_attributes][${input_length-1}][_destroy]">
-                      <button class="delete" type="button"></button>
+                      <div class="delete" type="button">削除</div>
                       </div>
                       </div>`);
   
